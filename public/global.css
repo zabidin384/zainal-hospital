@@ -1,0 +1,75 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+
+	/* Colors */
+	--primary: #0d6efd;
+}
+.top {
+	padding-top: 100px;
+}
+button {
+	width: fit-content;
+	background-color: #9b77fe;
+	padding: 5px 15px;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	/* font-weight: bold; */
+}
+button:hover {
+	opacity: 0.75;
+}
+input {
+	width: 40%;
+	margin: 20px;
+	padding: 5px;
+	padding-left: 15px;
+}
+textarea {
+	width: 83.5%;
+	padding: 10px 15px;
+}
+select {
+	margin-left: 20px;
+}
+h1 {
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	margin: 25px 0;
+}
+h2 {
+	font-weight: bold;
+	font-size: 32px;
+	text-align: center;
+	margin: 15px 0;
+}
+h3 {
+	font-weight: bold;
+	font-size: 28px;
+	text-align: center;
+	margin: 10px 0;
+}
+h4 {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: start;
+	margin: 10px 0;
+}
+h5 {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 5px 0;
+}
+p {
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+.icon-green {
+	color: green;
+}
+.icon-red {
+	color: red;
+}
