@@ -81,11 +81,15 @@ p {
 }
 .icon-green {
 	color: green;
+	padding: 5px;
 }
 .icon-red {
 	color: red;
+	padding: 5px 10px;
 }
 .icon-green:hover,
 .icon-red:hover {
 	cursor: pointer;
+	background: lightgray;
+	border-radius: 50%;
 }
