@@ -11,7 +11,7 @@ export default function Navbar({ user, setUser, role, id }) {
 		<nav className="navbar d-flex bg-light container-fluid position-fixed">
 			<div className="container">
 				<div>
-					<Link to="/menu" className="d-flex align-items-center gap-3">
+					<Link to="/" className="d-flex align-items-center gap-3">
 						<img src="assets/general/logo.png" alt="" />
 						<div className="fw-bold">
 							Qendra Klinike <br /> Universitare e Kosoves QKUK
