@@ -17,7 +17,6 @@ import DoctorPosts from "./pages/doctor/DoctorPosts";
 import Footer from "./components/Footer";
 import Home from "./pages/general/Home";
 import Login from "./pages/general/Login";
-import Menu from "./pages/Menu";
 import Navbar from "./components/Navbar";
 import NotFound from "./pages/NotFound";
 import PatientAccountDetails from "./pages/patient/PatientAccountDetails";
@@ -112,9 +111,6 @@ function App() {
 			<Router>
 				<Navbar user={user} setUser={setUser} role={role} id={profiles.id} />
 				<Routes>
-					{/* Menu */}
-					<Route path="/Menu" element={<Menu />} />
-
 					{/* General */}
 					<Route path="/" element={<Home posts={posts} />} />
 					<Route path="/about" element={<About />} />
