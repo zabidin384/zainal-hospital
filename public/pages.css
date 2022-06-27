@@ -49,10 +49,10 @@
 	object-fit: cover;
 }
 .homeHeaderText {
-	top: 12.5%;
+	top: 40vh;
 	right: 20%;
 	background-color: rgba(200, 200, 200, 0.9);
-	padding: 10px;
+	padding: 25px;
 	border-radius: 25px;
 }
 .homeHeaderText h1 {
@@ -109,10 +109,6 @@
 }
 
 @media only screen and (max-width: 1600px) {
-	.homeHeaderText {
-		top: 12.5%;
-		right: 20%;
-	}
 	.homeHeaderText h1 {
 		font-size: 2rem;
 	}
