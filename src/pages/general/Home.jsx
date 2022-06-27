@@ -38,7 +38,7 @@ export default function Home({ posts }) {
 	return (
 		<div className="home container-fluid top ps-0">
 			<div className="homeHeader text-center">
-				<img src="assets/general/heroimg.jpg" alt="" className="imgHero" />
+				<img src="/assets/general/heroimg.jpg" alt="" className="imgHero" />
 				<div className="homeHeaderText position-absolute text-center">
 					<h1>We take care of your health!</h1>
 					<h5>"He who has health, has hope; and he who has hope, has everything."</h5>
