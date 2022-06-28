@@ -11,7 +11,7 @@ export default function DoctorPatientDetails({ token }) {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const location = useLocation();
-	const id = location.pathname.split("%")[1];
+	const id = location.pathname.split("=")[1];
 
 	// Get Patient Details
 	useEffect(() => {
