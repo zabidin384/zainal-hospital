@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config";
 
 export default function patientAppointment({ doctors, token }) {
-	const [doctorId, setDoctorId] = useState(24);
+	const [doctorId, setDoctorId] = useState("");
 	const [date, setDate] = useState("");
 	const [description, setDescription] = useState("");
 	const [error, setError] = useState("");
@@ -59,7 +59,7 @@ export default function patientAppointment({ doctors, token }) {
 						{doctors.content ? (
 							doctors.content.map((doctor) => (
 								<option value={doctor.id} key={doctor.id}>
-									{doctor.firstName} {doctor.lastName}
+									doctorId && {doctor.firstName} {doctor.lastName}
 								</option>
 							))
 						) : (
