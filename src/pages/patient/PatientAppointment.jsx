@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config";
 
-export default function patientAppointment({ doctors }) {
+export default function patientAppointment({ doctors, token }) {
 	const [doctorId, setDoctorId] = useState("");
 	const [date, setDate] = useState("");
 	const [description, setDescription] = useState("");
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
-	const [slotNumber, setSlotNumber] = useState(1);
+	const [slots, setSlots] = useState("");
+	const [slotNumber, setSlotNumber] = useState("");
+
+	useEffect(() => {
+		async function handleDateTime() {
+			try {
+				const res = await axiosInstance.post("/slots", {
+					doctorId,
+					date,
+				});
+				setSlots(res.data);
+			} catch (err) {
+				if (err.response) {
+					console.log(err.response);
+				}
+			}
+		}
+		handleDateTime();
+	}, [date, doctorId]);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -60,12 +78,7 @@ export default function patientAppointment({ doctors }) {
 						onChange={(e) => setDate(e.target.value)}
 					/>
 					<select name="time" className="form-control w-25" required value={slotNumber} onChange={(e) => setSlotNumber(e.target.value)}>
-						<option value={1}>08.00 - 08.30</option>
-						<option value={2}>08.30 - 09.00</option>
-						<option value={3}>09.00 - 09.30</option>
-						<option value={4}>09.30 - 10.00</option>
-						<option value={5}>10.30 - 11.00</option>
-						<option value={6}>11.30 - 12.00</option>
+						{slots && slots.map((slot) => <option value={slot.slotNumber}>{slot.timeSlot}</option>)}
 					</select>
 				</div>
 				<div className="d-flex justify-content-center">
