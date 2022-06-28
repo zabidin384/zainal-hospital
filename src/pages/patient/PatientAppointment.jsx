@@ -59,7 +59,7 @@ export default function patientAppointment({ doctors, token }) {
 						{doctors.content ? (
 							doctors.content.map((doctor) => (
 								<option value={doctor.id} key={doctor.id}>
-								{doctorId && {doctor.firstName} {doctor.lastName}}
+								{doctorId && ({doctor.firstName} {doctor.lastName})}
 								</option>
 							))
 						) : (
