@@ -7,10 +7,10 @@ export default function AdminAccountDetails({ token }) {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const [profiles, setProfiles] = useState([]);
-	const [firstName, setFirstName] = useState(profiles && profiles.firstName);
-	const [lastName, setLastName] = useState(profiles.lastName);
-	const [email, setEmail] = useState(profiles.email);
-	const [mobileNumber, setMobileNumber] = useState(profiles.mobileNumber);
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [mobileNumber, setMobileNumber] = useState("");
 
 	// Get data profile
 	token &&
@@ -22,6 +22,14 @@ export default function AdminAccountDetails({ token }) {
 			};
 			fetchProfiles();
 		}, [success]);
+
+	profiles &&
+		useEffect(() => {
+			setFirstName(profiles.firstName);
+			setLastName(profiles.lastName);
+			setEmail(profiles.email);
+			setMobileNumber(profiles.mobileNumber);
+		}, [isEdit]);
 
 	// Update data profile
 	async function handleUpdate(e) {
@@ -59,6 +67,7 @@ export default function AdminAccountDetails({ token }) {
 					{isEdit ? (
 						<div className="row">
 							<div className="col">
+								<h2>My Profile</h2>
 								<div className="text-center">
 									<div className="text-center mt-5">
 										<img src="assets/admin/admin-profile.png" alt="" />
