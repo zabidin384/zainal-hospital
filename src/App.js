@@ -88,9 +88,6 @@ function App() {
 			<Router>
 				<Navbar user={user} setUser={setUser} role={role} id={profiles.id} />
 				<Routes>
-					{/* Menu */}
-					<Route path="/Menu" element={<Menu />} />
-
 					{/* General */}
 					<Route path="/" element={<Home posts={posts} />} />
 					<Route path="/about" element={<About />} />
