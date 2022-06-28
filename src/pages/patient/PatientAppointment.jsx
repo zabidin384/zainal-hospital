@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config";
 
-export default function patientAppointment({ doctors, token }) {
-	const [doctorId, setDoctorId] = useState(24);
+export default function patientAppointment({ doctors }) {
+	const [doctorId, setDoctorId] = useState("");
 	const [date, setDate] = useState("");
 	const [description, setDescription] = useState("");
 	const [error, setError] = useState("");
@@ -12,6 +12,7 @@ export default function patientAppointment({ doctors, token }) {
 
 	useEffect(() => {
 		async function handleDateTime() {
+			doctors.content && setDoctorId(doctors.content[0].id);
 			try {
 				const res = await axiosInstance.post("/slots", {
 					doctorId,
@@ -59,7 +60,7 @@ export default function patientAppointment({ doctors, token }) {
 						{doctors.content ? (
 							doctors.content.map((doctor) => (
 								<option value={doctor.id} key={doctor.id}>
-								{doctor.firstName} {doctor.lastName}
+									{doctor.firstName} {doctor.lastName}
 								</option>
 							))
 						) : (
@@ -78,7 +79,12 @@ export default function patientAppointment({ doctors, token }) {
 						onChange={(e) => setDate(e.target.value)}
 					/>
 					<select name="time" className="form-control w-25" required value={slotNumber} onChange={(e) => setSlotNumber(e.target.value)}>
-						{slots && slots.map((slot) => <option value={slot.slotNumber}>{slot.timeSlot}</option>)}
+						{slots &&
+							slots.map((slot, i) => (
+								<option value={slot.slotNumber} key={i}>
+									{slot.timeSlot}
+								</option>
+							))}
 					</select>
 				</div>
 				<div className="d-flex justify-content-center">
