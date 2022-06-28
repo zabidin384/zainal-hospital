@@ -118,7 +118,7 @@ function App() {
 					/>
 					<Route path="/doctor-patients" element={role === "ROLE_DOCTOR" ? <DoctorPatients patients={patients} /> : <Navigate to="/" />} />
 					<Route
-						path="/doctor-patient-details%:id"
+						path="/patient-details=:id"
 						element={role === "ROLE_DOCTOR" || role === "ROLE_ADMIN" ? <DoctorPatientDetails token={token} /> : <Navigate to="/" />}
 					/>
 
