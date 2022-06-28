@@ -25,7 +25,7 @@ export default function DoctorPatients({ patients }) {
 								</td>
 								<td>{patient.lastAppointment ? patient.lastAppointment : "-"}</td>
 								<td>
-									<Link to={`/doctor-patient-details=${patient.id}`}>
+									<Link to={`/patient-details=${patient.id}`}>
 										<button>Read all details</button>
 									</Link>
 								</td>
