@@ -39,7 +39,7 @@ export default function Home({ posts }) {
 		<div className="home top">
 			<div className="homeHeader text-center">
 				<div className="text-center">
-					<img src="/assets/general/heroimg.jpg" alt="" className="imgHero" />
+					<img src="assets/general/heroImg.jpg" alt="" className="imgHero" />
 				</div>
 				<div className="homeHeaderText position-absolute text-center">
 					<h1>We take care of your health!</h1>
