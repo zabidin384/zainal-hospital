@@ -6,10 +6,10 @@ export default function DoctorAccountDetails({ token }) {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const [profiles, setProfiles] = useState([]);
-	const [firstName, setFirstName] = useState(profiles && profiles.firstName);
-	const [lastName, setLastName] = useState(profiles && profiles.lastName);
-	const [email, setEmail] = useState(profiles && profiles.email);
-	const [mobileNumber, setMobileNumber] = useState(profiles && profiles.mobileNumber);
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [mobileNumber, setMobileNumber] = useState("");
 
 	// Get data profile
 	token &&
@@ -21,6 +21,14 @@ export default function DoctorAccountDetails({ token }) {
 			};
 			fetchProfiles();
 		}, [success]);
+
+	profiles &&
+		useEffect(() => {
+			setFirstName(profiles.firstName);
+			setLastName(profiles.lastName);
+			setEmail(profiles.email);
+			setMobileNumber(profiles.mobileNumber);
+		}, [isEdit]);
 
 	// Update data profile
 	async function handleUpdate(e) {
