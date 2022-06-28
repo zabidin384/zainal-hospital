@@ -30,7 +30,7 @@ export default function AdminPatients({ patients }) {
 										<td>{patient.email}</td>
 										<td>{patient.lastAppointment ? patient.lastAppointment : "-"}</td>
 										<td>
-											<Link to={`/doctor-patient-details=${patient.id}`}>
+											<Link to={`/patient-details=${patient.id}`}>
 												<button className="btn-sm">Read more</button>
 											</Link>
 										</td>
