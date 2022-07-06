@@ -1,7 +1,8 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
+import {posts} from "../../data";
 
-export default function AdminPosts({ posts }) {
+export default function AdminPosts() {
 	return (
 		<div className="AdminPosts top container-fluid">
 			<div className="row">
@@ -10,7 +11,7 @@ export default function AdminPosts({ posts }) {
 				</div>
 				<div className="col">
 					<h1>All List of Posts</h1>
-					<input type="text" placeholder="Search the title of the post..." className="form-control" />
+					{/* <input type="text" placeholder="Search the title of the post..." className="form-control" /> */}
 					<table className="table mt-5 table-hover">
 						<thead>
 							<tr className="table-secondary">
@@ -24,7 +25,7 @@ export default function AdminPosts({ posts }) {
 						</thead>
 						<tbody>
 							{posts.content ? (
-								posts.content.map((post) => (
+								posts.content.map(post => (
 									<tr key={post.id}>
 										<td>
 											<div className="form-check">
@@ -34,7 +35,7 @@ export default function AdminPosts({ posts }) {
 										<td>{post.title}</td>
 										<td>{post.owner.email}</td>
 										<td>{post.category}</td>
-										<td>{post.description}</td>
+										<td className="textWrap">{post.description}</td>
 										<td>
 											<i className="bi bi-check-lg icon-green"></i> <i className="bi bi-trash-fill icon-red"></i>
 										</td>
@@ -42,7 +43,7 @@ export default function AdminPosts({ posts }) {
 								))
 							) : (
 								<tr>
-									<td colSpan="5" className="fw-bold text-center">
+									<td colSpan={6} className="fw-bold text-center">
 										Loading the data...
 									</td>
 								</tr>
