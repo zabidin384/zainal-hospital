@@ -2,10 +2,8 @@
 	margin: 0;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
-
-	/* Colors */
-	--primary: #0d6efd;
 }
+
 .top {
 	padding-top: 80px;
 }
@@ -92,4 +90,18 @@ p {
 	cursor: pointer;
 	background: lightgray;
 	border-radius: 50%;
+}
+.addPhoto {
+	cursor: pointer;
+	border-radius: 10px;
+	background-color: #9b77fe;
+	color: white;
+	padding: 0 10px;
+	display: flex;
+	align-items: center;
+}
+.imgPP {
+	width: 200px;
+	height: 200px;
+	object-fit: contain;
 }
