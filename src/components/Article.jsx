@@ -16,7 +16,7 @@ export default function Article({ posts }) {
 										<p className="card-text">{post.description}</p>
 									</div>
 									<div className="text-center mb-3">
-										<Link to={`/article-details%${post.id}`}>
+										<Link to={`/article-details=${post.id}`}>
 											<button>Read more</button>
 										</Link>
 									</div>
