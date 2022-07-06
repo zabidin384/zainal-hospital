@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {axiosInstance} from "../../config";
-import FileBase64 from "react-file-base64";
 
 export default function AccountDetails({token}) {
 	const [isEdit, setIsEdit] = useState(false);
 	const [error, setError] = useState("");
 	const [error2, setError2] = useState("");
 	const [success, setSuccess] = useState("");
-	const [success2, setSuccess2] = useState("");
 	const [profiles, setProfiles] = useState([]);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -24,7 +22,7 @@ export default function AccountDetails({token}) {
 				setProfiles(res.data);
 			};
 			fetchProfiles();
-		}, [success, success2]);
+		}, [success]);
 
 	useEffect(() => {
 		setFirstName(profiles.firstName);
@@ -39,7 +37,6 @@ export default function AccountDetails({token}) {
 		setError("");
 		setSuccess("");
 		setError2("");
-		setSuccess2("");
 
 		try {
 			axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -66,7 +63,6 @@ export default function AccountDetails({token}) {
 		setError("");
 		setSuccess("");
 		setError2("");
-		setSuccess2("");
 
 		const fd = new FormData();
 		fd.append("pic", pic, pic.name);
@@ -76,8 +72,8 @@ export default function AccountDetails({token}) {
 			const res = await axiosInstance.post("/users/profile-picture", fd);
 			setIsEdit(false);
 			setPic("");
-			res && setSuccess2("Your photo profile has been updated successfully!");
-			console.log(res);
+			window.location.replace("/account-details");
+			res && console.log(res);
 		} catch (err) {
 			if (err.response) {
 				setError2("You failed to update your photo profile!");
@@ -145,7 +141,6 @@ export default function AccountDetails({token}) {
 							<div className="text-center my-5">
 								{profiles.profilePicture ? <img className="imgPP" src={`data:image;base64,${profiles.profilePicture}`} alt="" /> : <img src="assets/general/profile.png" alt="" />}
 							</div>
-							<div className="success">{success2}</div>
 						</div>
 					</div>
 					{profiles.firstName ? (
