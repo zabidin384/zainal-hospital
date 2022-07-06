@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {axiosInstance} from "../../config";
-import {post} from "../../Post";
+import {posts} from "../../data";
 
 export default function DoctorPosts({profiles, token}) {
 	// const [post, setPost] = useState([]);
@@ -37,14 +37,14 @@ export default function DoctorPosts({profiles, token}) {
 					</tr>
 				</thead>
 				<tbody>
-					{post.content ? (
-						post.content.map(post => (
+					{posts.content ? (
+						posts.content.map(post => (
 							<tr key={post.id}>
 								<td>{post.id}</td>
 								<td>{post.title}</td>
 								<td>{post.publishDate}</td>
 								<td>{post.category}</td>
-								<td>{post.description}</td>
+								<td className="textWrap">{post.description}</td>
 								<td>
 									<i className="bi bi-pencil-square icon-green"></i> <i className="bi bi-trash-fill icon-red"></i>
 								</td>
