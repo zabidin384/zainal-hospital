@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function Sidebar() {
 	return (
@@ -16,11 +16,14 @@ export default function Sidebar() {
 			<Link to="/admin-posts">
 				<i className="bi bi-newspaper iconAdmin" /> Articles
 			</Link>
-			<Link to="/admin-schedules">
-				<i className="bi bi-calendar-date-fill iconAdmin" /> Schedules
+			<Link to="/admin-appointments">
+				<i className="bi bi-calendar-date-fill iconAdmin" /> Appointments
 			</Link>
-			<Link to="/admin-account-details">
-				<i className="bi bi-person-circle iconAdmin" /> Profile
+			<Link to="/admin-schedules">
+				<i className="bi bi-clock-fill iconAdmin"></i> Schedules
+			</Link>
+			<Link to="/admin-setSchedule">
+				<i className="bi bi-alarm-fill iconAdmin"></i> Set Schedule
 			</Link>
 		</div>
 	);
