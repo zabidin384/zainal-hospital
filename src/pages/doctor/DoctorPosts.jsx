@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { axiosInstance } from "../../config";
+import React, {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
+import {axiosInstance} from "../../config";
+import {post} from "../../Post";
 
-export default function DoctorPosts({ profiles, token }) {
-	const [post, setPost] = useState([]);
+export default function DoctorPosts({profiles, token}) {
+	// const [post, setPost] = useState([]);
 	const location = useLocation();
 	const id = location.pathname.split("%")[1];
 
-	// Get Post By Doctor
-	useEffect(() => {
-		const fetchPost = async () => {
-			axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-			const res = await axiosInstance.get(`/posts/doctor/${id}`);
-			setPost(res.data);
-		};
-		fetchPost();
-	}, []);
+	// // Get Post By Doctor
+	// useEffect(() => {
+	// 	const fetchPost = async () => {
+	// 		axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+	// 		const res = await axiosInstance.get(`/posts/doctor/${id}`);
+	// 		setPost(res.data);
+	// 	};
+	// 	fetchPost();
+	// }, []);
 
 	return (
 		<div className="doctorPosts container top">
@@ -37,11 +38,11 @@ export default function DoctorPosts({ profiles, token }) {
 				</thead>
 				<tbody>
 					{post.content ? (
-						post.content.map((post) => (
+						post.content.map(post => (
 							<tr key={post.id}>
 								<td>{post.id}</td>
 								<td>{post.title}</td>
-								<td>10/10/2020</td>
+								<td>{post.publishDate}</td>
 								<td>{post.category}</td>
 								<td>{post.description}</td>
 								<td>
