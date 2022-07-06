@@ -47,6 +47,7 @@ nav {
 .sidebar {
 	background-color: #9b77fe;
 	min-height: calc(100vh - 80px);
+	height: 100%;
 	width: 235px;
 	color: white;
 	font-weight: bold;
