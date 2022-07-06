@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
-export default function AdminDoctors({ doctors }) {
+export default function AdminDoctors({doctors}) {
 	return (
 		<div className="AdminDoctors top container-fluid">
 			<div className="row">
@@ -11,7 +11,7 @@ export default function AdminDoctors({ doctors }) {
 				</div>
 				<div className="col">
 					<h1>All List of Doctors</h1>
-					<input type="text" placeholder="Search name of the doctor..." className="form-control" />
+					{/* <input type="text" placeholder="Search name of the doctor..." className="form-control" /> */}
 					<table className="table mt-5 table-hover">
 						<thead>
 							<tr className="table-secondary">
@@ -25,7 +25,7 @@ export default function AdminDoctors({ doctors }) {
 						</thead>
 						<tbody>
 							{doctors.content ? (
-								doctors.content.map((doctor) => (
+								doctors.content.map(doctor => (
 									<tr key={doctor.id}>
 										<td>
 											<div className="form-check">
@@ -37,7 +37,7 @@ export default function AdminDoctors({ doctors }) {
 										</td>
 										<td>{doctor.email}</td>
 										<td>10/10/1970</td>
-										<td>{doctor.experiences.map((experience) => experience)}</td>
+										<td>{doctor.experiences.map(experience => experience)}</td>
 										<td>
 											<Link to="/admin-schedules">
 												<button className="btn-sm">See the schedule</button>
@@ -47,7 +47,9 @@ export default function AdminDoctors({ doctors }) {
 								))
 							) : (
 								<tr>
-									<td className="fw-bold">Loading the data...</td>
+									<td className="fw-bold text-center" colSpan={6}>
+										Loading the data...
+									</td>
 								</tr>
 							)}
 						</tbody>
