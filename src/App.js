@@ -55,7 +55,7 @@ function App() {
 				}
 			};
 			fetchProfiles();
-		}, [token, decoded]);
+		}, []);
 
 	// Get posts
 	// posts &&
