@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import About from "./pages/general/About";
 import AccountDetails from "./pages/general/AccountDetails";
@@ -24,10 +24,10 @@ import PatientDiagnosis from "./pages/patient/PatientDiagnosis";
 import PatientDoctors from "./pages/patient/PatientDoctors";
 import PatientDoctorDetails from "./pages/patient/PatientDoctorDetails";
 import Register from "./pages/general/Register";
-import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
-import {axiosInstance} from "./config";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { axiosInstance } from "./config";
 import AdminSetSchedule from "./pages/admin/AdminSetSchedule";
-import {posts} from "./data";
+import { posts } from "./data";
 
 function App() {
 	const token = localStorage.getItem("jwt") && localStorage.getItem("jwt");
@@ -43,12 +43,19 @@ function App() {
 	token &&
 		useEffect(() => {
 			const fetchProfiles = async () => {
-				axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-				const res = await axiosInstance.get("/users");
-				setProfiles(res.data);
+				try {
+					axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+					const res = await axiosInstance.get("/users");
+					setProfiles(res.data);
+				} catch (error) {
+					if (error.response.status === 403) {
+						localStorage.removeItem("jwt");
+						window.location.replace("/login");
+					}
+				}
 			};
 			fetchProfiles();
-		}, []);
+		}, [token, decoded]);
 
 	// Get posts
 	// posts &&
