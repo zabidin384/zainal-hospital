@@ -39,6 +39,11 @@
 /* End of Doctor */
 
 /* General */
+/* AccountDetails */
+[type="file"] {
+	border: none;
+	margin: 0;
+}
 /* Home */
 .homeHeader {
 	height: 100vh;
