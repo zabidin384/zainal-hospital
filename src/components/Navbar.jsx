@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ user, setUser, role, id }) {
+export default function Navbar({ user, setUser, role, id, profiles }) {
 	function handleLogout() {
 		localStorage.removeItem("jwt");
 		setUser("");
@@ -51,8 +51,12 @@ export default function Navbar({ user, setUser, role, id }) {
 							</Link>
 						</li>
 						<li>
-							<Link to="/patient-account-details" className="d-flex align-items-center gap-2">
-								<img src="/assets/patient/patient.png" alt="" className="avatar" />
+							<Link to="/account-details" className="d-flex align-items-center gap-2">
+								{!profiles.profilePicture ? (
+									<img src="/assets/general/profile.png" alt="" className="avatar" />
+								) : (
+									<img className="avatar" src={`data:image;base64,${profiles.profilePicture}`} alt="" />
+								)}
 								<div>{user}</div>
 							</Link>
 						</li>
@@ -95,8 +99,12 @@ export default function Navbar({ user, setUser, role, id }) {
 							</Link>
 						</li>
 						<li>
-							<Link to="/doctor-account-details" className="d-flex align-items-center gap-2">
-								<img src="/assets/doctor/doctors.webp" alt="" className="avatar" />
+							<Link to="/account-details" className="d-flex align-items-center gap-2">
+								{!profiles.profilePicture ? (
+									<img src="/assets/general/profile.png" alt="" className="avatar" />
+								) : (
+									<img className="avatar" src={`data:image;base64,${profiles.profilePicture}`} alt="" />
+								)}
 								<div>{user}</div>
 							</Link>
 						</li>
@@ -129,8 +137,12 @@ export default function Navbar({ user, setUser, role, id }) {
 							</Link>
 						</li>
 						<li>
-							<Link to="/admin-account-details" className="d-flex align-items-center gap-2">
-								<img src="/assets/admin/admin-profile.png" alt="" className="avatar" />
+							<Link to="/account-details" className="d-flex align-items-center gap-2">
+								{!profiles.profilePicture ? (
+									<img src="/assets/general/profile.png" alt="" className="avatar" />
+								) : (
+									<img className="avatar" src={`data:image;base64,${profiles.profilePicture}`} alt="" />
+								)}
 								<div>{user}</div>
 							</Link>
 						</li>
