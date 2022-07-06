@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {axiosInstance} from "../../config";
+import React, { useEffect, useState } from "react";
+import { axiosInstance } from "../../config";
 
-export default function AccountDetails({token}) {
+export default function AccountDetails({ token }) {
 	const [isEdit, setIsEdit] = useState(false);
 	const [error, setError] = useState("");
 	const [error2, setError2] = useState("");
@@ -17,9 +17,16 @@ export default function AccountDetails({token}) {
 	token &&
 		useEffect(() => {
 			const fetchProfiles = async () => {
-				axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-				const res = await axiosInstance.get("/users");
-				setProfiles(res.data);
+				try {
+					axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+					const res = await axiosInstance.get("/users");
+					setProfiles(res.data);
+				} catch (error) {
+					if (error.response.status === 403) {
+						localStorage.removeItem("jwt");
+						window.location.replace("/login");
+					}
+				}
 			};
 			fetchProfiles();
 		}, [success]);
@@ -94,7 +101,7 @@ export default function AccountDetails({token}) {
 								{!profiles.profilePicture ? <img src="assets/admin/admin-profile.png" alt="" /> : <img className="imgPP" src={`data:image/png;base64,${profiles.profilePicture}`} alt="" />}
 							</div>
 							<div className="d-flex gap-2 justify-content-center mt-3">
-								<input className="border-0 d-flex m-0 align-items-center" type="file" id="fileInput" accept=".png, .jpg, .jpeg" name="pic" onChange={e => setPic(e.target.files[0])} />
+								<input className="border-0 d-flex m-0 align-items-center" type="file" id="fileInput" accept=".png, .jpg, .jpeg" name="pic" onChange={(e) => setPic(e.target.files[0])} />
 								{pic && <button onClick={handleUpdatePP}>Update</button>}
 								<button onClick={() => setIsEdit(false)} className="me-3">
 									Cancel
@@ -110,19 +117,19 @@ export default function AccountDetails({token}) {
 							<label className="form-label">
 								<b>First Name</b> :
 							</label>
-							<input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} required />
+							<input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
 							<label className="form-label">
 								<b>Last Name</b> :
 							</label>
-							<input type="text" placeholder="Last Name" className="form-control" value={lastName} onChange={e => setLastName(e.target.value)} required />
+							<input type="text" placeholder="Last Name" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
 							<label className="form-label">
 								<b>Email address</b> :
 							</label>
-							<input type="email" placeholder="Email" className="form-control" value={email} onChange={e => setEmail(e.target.value)} required />
+							<input type="email" placeholder="Email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
 							<label className="form-label">
 								<b>Mobile number</b> :
 							</label>
-							<input type="text" placeholder="Mobile Number" className="form-control" value={mobileNumber} onChange={e => setMobileNumber(e.target.value)} required />
+							<input type="text" placeholder="Mobile Number" className="form-control" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} required />
 							<div className="text-center">
 								<button onClick={() => setIsEdit(false)} className="me-3">
 									Cancel
